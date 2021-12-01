@@ -1,8 +1,9 @@
-# mainatiner: nick.reva@snap.com
+# If you intened to deploy Kubernetes in an air-gapped environment,
+# please consult the documentation on how to configure custom RKE images.
 nodes:
 - address: 192.168.50.101
   port: "22"
-  internal_address: 192.168.50.101
+  internal_address: 10.0.2.15 #192.168.50.101
   role:
   - controlplane
   - etcd
@@ -11,25 +12,11 @@ nodes:
   user: root
   docker_socket: /var/run/docker.sock
   ssh_key: ""
-  ssh_key_path: ~/.ssh/id_rsa
+  ssh_key_path: .vagrant/machines/node1/virtualbox/private_key
   ssh_cert: ""
   ssh_cert_path: ""
   labels: {}
   taints: []
-#- address: 192.168.50.102
-#  port: "22"
-#  internal_address: 192.168.50.102
-#  role:
-#  - worker
-#  hostname_override: node2
-#  user: root
-#  docker_socket: /var/run/docker.sock
-#  ssh_key: ""
-#  ssh_key_path: ~/.ssh/id_rsa
-#  ssh_cert: ""
-#  ssh_cert_path: ""
-#  labels: {}
-#  taints: []
 services:
   etcd:
     image: ""
